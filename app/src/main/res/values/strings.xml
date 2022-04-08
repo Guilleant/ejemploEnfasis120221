@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Kotlin202201</string>
+    <string name="bienvenido">¡Bienvenido %s!</string>
+
+    <string-array name="tipos_identificacion">
+        <item>Registro Civil</item>
+        <item>Tarjeta de Identidad</item>
+    </string-array>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/file"
+        android:title="Archivo">
+        <!-- "file" submenu -->
+        <menu>
+            <item android:id="@+id/registrar_ninos"
+                android:title="Registrar Niños" />
+            <item android:id="@+id/listar_ninos"
+                android:title="Listar Niños" />
+            <item android:id="@+id/localizacion_ninos"
+                android:title="Datos Localización" />
+        </menu>
+    </item>
+
+    <item android:id="@+id/salir"
+        android:title="Salir"
+        android:icon="@drawable/ic_exit"
+        app:showAsAction="ifRoom"/>
+</menu>
