@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var listNotes = ArrayList<ClsNinos>()
+    private lateinit var listNotes: MutableList<ClsNinos>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +25,18 @@ class MainActivity : AppCompatActivity() {
 
         val fab: View = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .show()
+            //Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+            //    .setAction("Action", null)
+            //    .show()
+            val intent = Intent(this, NinosActivity::class.java)
+            startActivity(intent)
         }
 
+        var db = DatabaseHandler( this )
+
+        listNotes = db?.readData()
+
+        /*
         listNotes.add(ClsNinos("TI", 1, "Pérez", "Pedro", "Sincelejo", "311"))
         listNotes.add(ClsNinos("RC", 2, "Martínez", "Ana", "Corozal", "312"))
         listNotes.add(ClsNinos("TI", 3, "Tuirán", "Rogelio", "Sincelejo", "315"))
@@ -40,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         listNotes.add(ClsNinos("TI", 8, "Tuirán", "Rogelio", "Sincelejo", "315"))
         listNotes.add(ClsNinos("RC", 9, "Suárez", "Samira", "Sampués", "317"))
         listNotes.add(ClsNinos("TI", 10, "Velilla", "Luis", "Corozal", "301"))
-
+        */
         var notesAdapter = NinosAdapter(this, listNotes)
         lvNotes.adapter = notesAdapter
         lvNotes.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, position, id ->
@@ -97,10 +104,10 @@ class MainActivity : AppCompatActivity() {
 
     inner class NinosAdapter : BaseAdapter {
 
-        private var ninosList = ArrayList<ClsNinos>()
+        private var ninosList: MutableList<ClsNinos>
         private var context: Context? = null
 
-        constructor(context: Context, ninosList: ArrayList<ClsNinos>) : super() {
+        constructor(context: Context, ninosList: MutableList<ClsNinos>) : super() {
             this.ninosList = ninosList
             this.context = context
         }
